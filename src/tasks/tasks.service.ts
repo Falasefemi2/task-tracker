@@ -13,7 +13,9 @@ import { TaskStatus } from './taskstatus';
 
 @Injectable()
 export class TasksService {
-  constructor(@InjectRepository(Task) private tasks: Repository<Task>) {}
+  constructor(
+    @InjectRepository(Task) private readonly tasks: Repository<Task>,
+  ) {}
 
   async create(dto: CreateTaskDto, user: User): Promise<Task> {
     if (!user) {
